@@ -5,19 +5,19 @@
 
 using namespace std;
 
-forward_list <string> repackList(forward_list <string> fList)  //4! OK!
+forward_list <string> repackList(forward_list <string> fList)
 {
-    vector <string> vList;                                                          //Для хранения элементов списка.
-    for(forward_list <string>::iterator i = fList.begin(); i != fList.end(); i++)   //Перекладываем элементы в вектор,
-        vList.push_back(*i);                                                        //чтобы итерироваться.
+    vector <string> vList;                                                          //Р”Р»СЏ С…СЂР°РЅРµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ СЃРїРёСЃРєР°.
+    for(forward_list <string>::iterator i = fList.begin(); i != fList.end(); i++)   //РџРµСЂРµРєР»Р°РґС‹РІР°РµРј СЌР»РµРјРµРЅС‚С‹ РІ РІРµРєС‚РѕСЂ,
+        vList.push_back(*i);                                                        //С‡С‚РѕР±С‹ РёС‚РµСЂРёСЂРѕРІР°С‚СЊСЃСЏ.
 
-    forward_list <string> fListRepack;                                              //Перепакованный список.
+    forward_list <string> fListRepack;                                              //РџРµСЂРµРїР°РєРѕРІР°РЅРЅС‹Р№ СЃРїРёСЃРѕРє.
 
-    fListRepack.emplace_front(vList.at(vList.size() / 2));                          //Помещаем в начало нового списка элемент из середины.
-    if(vList.size() % 2 == 0)                                                       //Если чётное число элементов.
-        fListRepack.emplace_front(vList.at((vList.size() - 1) / 2));                //Значит центральных элементов 2. Второй тоже заносим в новый список.
+    fListRepack.emplace_front(vList.at(vList.size() / 2));                          //РџРѕРјРµС‰Р°РµРј РІ РЅР°С‡Р°Р»Рѕ РЅРѕРІРѕРіРѕ СЃРїРёСЃРєР° СЌР»РµРјРµРЅС‚ РёР· СЃРµСЂРµРґРёРЅС‹.
+    if(vList.size() % 2 == 0)                                                       //Р•СЃР»Рё С‡С‘С‚РЅРѕРµ С‡РёСЃР»Рѕ СЌР»РµРјРµРЅС‚РѕРІ.
+        fListRepack.emplace_front(vList.at((vList.size() - 1) / 2));                //Р—РЅР°С‡РёС‚ С†РµРЅС‚СЂР°Р»СЊРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ 2. Р’С‚РѕСЂРѕР№ С‚РѕР¶Рµ Р·Р°РЅРѕСЃРёРј РІ РЅРѕРІС‹Р№ СЃРїРёСЃРѕРє.
 
-    for(int i = (vList.size() - 3) / 2, j = vList.size() / 2 + 1; i >= 0 && j < vList.size(); i--, j++) //Идём из центра к краям.
+    for(int i = (vList.size() - 3) / 2, j = vList.size() / 2 + 1; i >= 0 && j < vList.size(); i--, j++) //РРґС‘Рј РёР· С†РµРЅС‚СЂР° Рє РєСЂР°СЏРј.
     {
         fListRepack.emplace_front(vList.at(j));
         fListRepack.emplace_front(vList.at(i));
@@ -37,7 +37,7 @@ int main()
         out << i;
         out >> str;
         out.clear();
-        fList.emplace_front(str); //Вставка В НАЧАЛО
+        fList.emplace_front(str); //Р’СЃС‚Р°РІРєР° Р’ РќРђР§РђР›Рћ
     }
     fList = repackList(fList);
     for(forward_list <string>::iterator i = fList.begin(); i != fList.end(); i++)
